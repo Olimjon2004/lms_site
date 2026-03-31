@@ -15,4 +15,9 @@ urlpatterns = [
     path('kafedra/<int:pk>/edit/',kafedra_edit, name='kafedra_edit'),
     path('kafedra/<int:pk>/delete/',kafedra_delete, name='kafedra_delete'),
     path('kafedra/list/',kafedra_list, name='kafedra_list'),
+
+    path('subjects/create/',subjects_creat, name='subjects_create'),
+    path('subjects/<int:pk>/edit/',subjects_edit, name='subjects_edit'),
+    path('subjects/<int:pk>/delete/',subjects_delete, name='subjects_delete'),
+    path('subjects/list/',subjects_list, name='subjects_list'),
 ]

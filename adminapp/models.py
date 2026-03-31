@@ -14,3 +14,35 @@ class Kafedra(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Subjects(models.Model):
+    name = models.CharField(max_length=100, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+    
+
+class Teachers(models.Model):
+    name = models.CharField(max_length=100, null=False, blank=False)
+    subjects = models.CharField(Subjects, max_length=100, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+    
+
+class Group(models.Model):
+    name = models.CharField(max_length=100, null=False, blank=False)
+    faculty = models.CharField(Faculty, max_length=100, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+    
+
+class Student(models.Model):
+    name = models.CharField(max_length=100, null=False, blank=False)
+    group = models.CharField(Group, max_length=100, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
+

@@ -29,3 +29,10 @@ def get_kafedra():
         cursor.execute("""SELECT * from adminapp_kafedra""")
         kafedra = dictfetchall(cursor)
         return kafedra
+    
+
+def get_subjects():
+    with closing(connection.cursor()) as cursor:
+        cursor.execute("""SELECT * from adminapp_subjects""")
+        subjects = dictfetchall(cursor)
+        return subjects

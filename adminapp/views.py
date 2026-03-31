@@ -127,3 +127,46 @@ def kafedra_list(request):
         "kafedras": kafedras
     }
     return render(request, 'kafedra/list.html', ctx)
+
+
+@login_required_decorator
+def subjects_creat(request):
+    model = Subjects()
+    form = SubjectsForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('subjects_list')
+    ctx = {
+        'form': form
+    }
+    return render(request, 'subjects/form.html', ctx)
+
+
+@login_required_decorator
+def subjects_edit(request, pk):
+    model = Subjects.objects.get(pk=pk)
+    form = SubjectsForm(request.POST or None, instace=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('subjects_list')
+    ctx = {
+        'form': form,
+        'model': model
+    }
+    return render(request, 'subjects/form.html', ctx)
+
+
+@login_required_decorator
+def subjects_delete(request, pk):
+    model = Subjects.objects.get(pk=pk)
+    model.delete()
+    return redirect('subjects_list')
+
+
+@login_required_decorator
+def subjects_list(request):
+    subjects = services.get_subjects()
+    ctx = {
+        "subjects": subjects
+    }
+    return render(request, 'subjects/list.html', ctx)
