@@ -42,7 +42,7 @@ class Group(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     group = models.CharField(Group, max_length=100, null=False, blank=False)
-
+    
     def __str__(self):
         return self.name
 

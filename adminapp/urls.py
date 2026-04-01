@@ -20,4 +20,9 @@ urlpatterns = [
     path('subjects/<int:pk>/edit/',subjects_edit, name='subjects_edit'),
     path('subjects/<int:pk>/delete/',subjects_delete, name='subjects_delete'),
     path('subjects/list/',subjects_list, name='subjects_list'),
+
+    path('teachers/create', teachers_creat, name='teachers_create'),
+    path('teachers/<int:pk>/edit/', teachers_edit, name='teachers_edit'),
+    path('teachers/<int:pk>/delete/', teachers_delete, name='teachers_delete'),
+    path('teachers/list/', teachers_list, name='teachers_list')
 ]

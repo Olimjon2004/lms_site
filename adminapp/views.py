@@ -170,3 +170,47 @@ def subjects_list(request):
         "subjects": subjects
     }
     return render(request, 'subjects/list.html', ctx)
+
+
+@login_required_decorator
+def teachers_creat(request):
+    model = Teachers()
+    form = TeachersForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect("teachers_list")
+    ctx = {
+        'form': form
+    }
+    return render(request, 'teachers/form.html', ctx)
+
+
+@login_required_decorator
+def teachers_edit(request, pk):
+    model = Teachers.objects.get(pk=pk)
+    form = TeachersForm(request.POST or None, instance=model)
+    if request.POST and form.is_valid():
+        form.save()
+        return redirect('teachers_list')
+    ctx = {
+        'form': form,
+        'model': model
+    }
+    return render(request, 'teachers/form.html', ctx)
+
+
+@login_required_decorator
+def teachers_delete(request, pk):
+    model = Teachers.objects.get(pk=pk)
+    model.delete()
+    return redirect('teachers_list')
+
+
+@login_required_decorator
+def teachers_list(request):
+    teachers = services.get_teachers()
+    ctx = {
+        'teachers': teachers
+    }
+    return render(request, 'teachers/list.html', ctx)
+

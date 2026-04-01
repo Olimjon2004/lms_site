@@ -36,3 +36,10 @@ def get_subjects():
         cursor.execute("""SELECT * from adminapp_subjects""")
         subjects = dictfetchall(cursor)
         return subjects
+    
+
+def get_teachers():
+    with closing(connection.cursor()) as cursor:
+        cursor.execute(""" SELECT * from adminapp_teachers""")
+        teachers = dictfetchall(cursor)
+        return teachers
